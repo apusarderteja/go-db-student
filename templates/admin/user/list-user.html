@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List User</title>
+</head>
+<body>
+    <a href="/users/create">Create New User</a>
+    <ul>
+        <table>
+        <img src="/static/logo.png" alt="LOGO">
+
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            {{range . }}
+                <tr>
+                    <td>{{ .FirstName }}</td>
+                    <td>{{ .LastName }}</td>
+                    <td>{{ .Username }}</td>
+                    <td>{{ .Email }}</td>
+                    
+                    <td>{{ if .Status}}Active{{else}}Inactive{{end}}</td>
+                    <td>
+                        <a href="/users/{{.ID}}/edit">Edit</a>
+                        <a href="/users/{{.ID}}/delete">Delete</a>
+                    </td>
+                </tr>
+                 
+        {{end}}
+        </table>
+        
+    </ul>
+    <a href="/logout">Logout</a>
+</body>
+</html>

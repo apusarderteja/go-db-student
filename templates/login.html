@@ -1,0 +1,16 @@
+{{template "header.html"}}
+{{.LoginUser.Username}}
+    <img src="/static/logo.png" alt="LOGO">
+    <form action="/login" method="POST">
+        <input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+        <label for="username">Username</label>
+        <input id="username" type="text" name="Username" value="{{ .LoginUser.Username }}">
+        <p style="color: red;">{{ .FormError.Username }}</p>
+
+        <label for="password">Password</label>
+        <input id="password" type="password" name="Password" value="{{ .LoginUser.Password }}">
+        <p style="color: red;">{{ .FormError.Password }}</p>
+
+        <button type="submit">Login</button>
+    </form>
+{{ template "footer.html"}}

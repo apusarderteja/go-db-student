@@ -1,0 +1,59 @@
+<input type="hidden" name="csrf_token" value="{{.CSRFToken}}">
+
+<label for="first_name">First Name</label>
+<input id="first_name" type="text" name="FirstName" value="{{.FirstName}}">
+{{ with (index .FormError "first_name") }}
+<p style="color: red;">{{.}}</p>
+{{end}}
+<br>
+
+<label for="last_name">Last Name</label>
+<input id="last_name" type="text" name="LastName" value="{{.LastName}}">
+{{ with (index .FormError "last_name") }}
+<p style="color: red;">{{.}}</p>
+{{end}}
+<br>
+
+<label for="username">Username</label>
+<input id="username" type="text" {{if .ID }} readonly {{end}} name="Username" value="{{.Username}}">
+{{ with (index .FormError "username") }}
+<p style="color: red;">{{.}}</p>
+{{end}}
+<br>
+
+<label for="email">Email</label>
+<input id="email" type="email"  {{if .ID }} readonly {{end}} name="Email" value="{{.Email}}">
+{{ with (index .FormError "Email") }}
+<p style="color: red;">{{.}}</p>
+{{end}}
+<br>
+
+
+
+
+{{if eq .ID 0}} 
+<label for="password">Password</label>
+<input id="password" type="password" name="Password" value="">
+{{ with (index .FormError "Password") }}
+<p style="color: red;">{{.}}</p>
+{{end}}
+<br>
+{{end}}
+{{if gt .ID 0}} 
+<label for="status">Status</label>
+<br>
+<label for="active">
+<input id="active" type="radio" name="Status" value="true" {{if .Status}} checked{{end}}>
+Active
+</label>
+<label for="inactive">
+<input id="inactive" type="radio" name="Status" value="false" {{if not .Status}} checked{{end}}>
+Inactive
+</label>
+
+
+{{ with (index .FormError "Status") }}
+<p style="color: red;">{{.}}</p>
+{{end}}
+<br>
+{{end}}

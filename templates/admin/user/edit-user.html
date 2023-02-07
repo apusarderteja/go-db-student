@@ -1,0 +1,10 @@
+{{template "header.html"}}
+<img src="/static/logo.png" alt="LOGO">
+    <form action="/users/{{.ID}}/update" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        
+        {{template "_form.html" .}}
+        
+        <button type="submit">Update</button>
+    </form>
+{{ template "footer.html"}}
