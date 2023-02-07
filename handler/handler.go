@@ -24,7 +24,7 @@ func NewHandler(sm *scs.SessionManager, formDecoder *form.Decoder, db *postgres.
 	h := &Handler{
 		sessionManager: sm,
 		decoder:        formDecoder,
-		db:             *storage,
+		// db:             *storage,
 	}
 
 	r := chi.NewRouter()
